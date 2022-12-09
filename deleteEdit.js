@@ -29,7 +29,20 @@ deleteBtn.appendChild(addButton)
  li.appendChild(deleteBtn)
 
  //append list to  list
+// itemsList.appendChild(li)
+
+var addDescription= document.getElementById("description").value;
+// console.log(addDescription);
+var addList = document.createElement('li')
+//add class
+addList.className="list-group-item";
+//add textnode
+var addText = document.createTextNode(addDescription)
+//append to input
+addList.appendChild(addText)
+li.appendChild(addList)
 itemsList.appendChild(li)
+// itemsList.appendChild(addList)
 
 }
 
@@ -41,6 +54,8 @@ itemsList.appendChild(li)
     itemsList.removeChild(li)
  }
     }
+
+    
  }
 
  // filter function
@@ -53,9 +68,10 @@ itemsList.appendChild(li)
 
 Array.from(items).forEach(function(item){
     let itemName = item.firstChild.textContent;
+    let description = item.childNodes[1].textContent;
     //  console.log(item.firstChild);
     // console.log(item.lastChild);
-    if(itemName.toLowerCase().indexOf(text) != -1){
+    if(itemName.toLowerCase().indexOf(text) != -1 || description.toLowerCase().indexOf(text)!=-1){
         item.style.display='block';
     }else{
         item.style.display='none';
@@ -64,3 +80,4 @@ Array.from(items).forEach(function(item){
 
 
  }
+
