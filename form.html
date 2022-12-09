@@ -32,41 +32,63 @@
     <h1 style="color :red; text-align:center";>Book Appoinment</h1>
     <h3 style="text-align: center; color: yellow;">Book call slot our representative call you and give advice to you</h3>
     <hr width="100%"; height=4px  />
-    <form  id="my-form" action="#" onsubmit="onSignup(event)">
+    <form  id="my-form" action="#" onsubmit="ToLocalStorage(event)">
         <div id="msg"></div>
 <label>Enter Name:</label>
 <br />
-<input type="text" id="name" />
+<input type="text" id="name" name="username" required/>
 <br />
 <label>Email:</label>
 <br />
-<input type="email" id="mail"  required/>
+<input type="email" id="mail" name="email" required/>
+<br />
+<label>Phone Number:</label>
+<input type="tel" id="phone" name="number">
 <br />
 <label>Password:</label>
 <br />
-<input type="password" id="password" />
+<input type="password" id="password" name="password"  required/>
 <br />
 
 <input style="padding: 10px; margin:30px" type="submit" id="btn" name="submit">
 
     </form>
     <script>
+ 
 
-        function onSignup(event){
-            const name= document.getElementById('name').value
-     const mail= document.getElementById('mail').value
-     const password= document.getElementById('password').value
-    const formInput= document.getElementById('my-form').value
+ function ToLocalStorage(event){
+    event.preventDefault()
+    const name= event.target.username.value
+    const email= event.target.email.value
+    const number= event.target.number.value
+    const password= event.target.password.value
+ 
+    localStorage.setItem('Name','name')
+    localStorage.setItem('Email','email')
+    localStorage.setItem('Phone Number','phone')
+    localStorage.setItem('Password','password')
 
-             event.preventDefault()
+
+ }
+
+//  //to print console value......
 
 
-     console.log(`${mail}, ${name}, ${password}`)
+//         function onSignup(event){
+//             const name= document.getElementById('name').value
+//      const mail= document.getElementById('mail').value
+//      const password= document.getElementById('password').value
+//     const formInput= document.getElementById('my-form').value
+
+//              event.preventDefault()
+
+
+//      console.log(`${mail}, ${name}, ${password}`)
 
 
      
 
-         }
+//          }
 
         let btn = document.querySelector("#btn")
 
