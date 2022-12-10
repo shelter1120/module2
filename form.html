@@ -15,7 +15,7 @@
         text-align: center;
         height: 200px;
         border-radius: 1rem;
-        margin: 50px;
+        margin: 40px;
     }
     input{
         font-size: 20px;
@@ -53,6 +53,8 @@
 <input style="padding: 10px; margin:30px" type="submit" id="btn" name="submit">
 
     </form>
+    <ul id="list-item"></ul>
+
     <script>
  
 
@@ -74,9 +76,19 @@
        number:number,
        password:password
     };
-    localStorage.setItem('userdetails',JSON.stringify(obj))
+//to store multiple user in localstorage use unique id (email)
+    localStorage.setItem(obj.email,JSON.stringify(obj))
 
+    onShowNewDetails(obj)
  }
+
+  function onShowNewDetails(user){
+    const parentNode= document.getElementById('list-item')
+    const addChild = `<li>${user.name} - ${user.email}</li>`
+    // parentNode.innerHTML=addChild;
+    //old user remove by adding new list so add new user + old user
+    parentNode.innerHTML=parentNode.innerHTML+addChild;
+  }
 
  //to print console value......
 
