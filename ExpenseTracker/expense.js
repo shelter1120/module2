@@ -21,8 +21,18 @@ const category= document.getElementById('category')
             category:category.value
             
         }
-        localStorage.setItem(myobj.description,JSON.stringify(myobj))
-        showUserOnScreen(myobj)
+ 
+        axios.post("https://crudcrud.com/api/92f120125ee84432b1a4575346e2e34d/BookingApp",myobj)
+        .then((res)=>{
+            showUserOnScreen(res.data)
+             console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+
+        // localStorage.setItem(myobj.description,JSON.stringify(myobj))
+        // showUserOnScreen(myobj)
         amount.value="";
         description.value="";
         console.log(description.value)
