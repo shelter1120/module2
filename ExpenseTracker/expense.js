@@ -40,6 +40,21 @@ const category= document.getElementById('category')
 
  }
 
+ window.addEventListener("DOMContentLoaded",()=>{
+     const data = axios.get("https://crudcrud.com/api/92f120125ee84432b1a4575346e2e34d/BookingApp")
+    .then((res)=>{
+        for(let i=0;i<res.data.length;i++){
+            showUserOnScreen(res.data[i])
+        }
+ console.log(res)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+    console.log(data)
+ })
+
+
  function showUserOnScreen(myobj){
     const child = `<li id="${myobj.description}">${myobj.amount}-${myobj.description}-${myobj.category}
     <button onClick='deleteItem("${myobj.description}")'> Delete</button>
