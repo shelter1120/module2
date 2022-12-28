@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>async & await</title>
+</head>
+
+<body>
+    <script>
+
+        console.log('person 1: shows tickets')
+        console.log('person 2:shows ticekt')
+        const preMovie = async () => {
+
+            const getTicketPromise = new Promise((resolve, reject) => {
+                setTimeout(() => resolve('ticket'), 3000)
+            })
+            const addPopcorn = new Promise((resolve, reject) => resolve('popcorn'))
+            const addButter = new Promise((resolve, reject) => resolve('butter'))
+            const addColdDrink = new Promise((resolve, reject) => resolve('coldrink'))
+
+            let ticekt = await getTicketPromise;
+            console.log(`wife : i have ${ticekt}`)
+            console.log('husband : lets go for movie')
+            console.log('wife: No,i need popcorn')
+
+             let popcorn = await addPopcorn;
+            //literal and variable
+            console.log(`husband : i have popcorn`)
+            console.log(`husband : i have ${popcorn}`);
+            console.log('husband: go now');
+            console.log('wife: no,i need butter');
+
+            let butter = await addButter;
+            console.log(`husband : now i have${butter}`);
+            console.log('wife : now lets go for moive,yehehe');
+            console.log('husband :i want drink');
+
+            let coldrink = await addColdDrink;
+            console.log(`wife : i have${coldrink}`)
+
+            // return ticekt;
+
+        }
+        preMovie().then((e) => console.log(`person 3 :shows${e}`))
+
+    </script>
+</body>
+
+</html>
